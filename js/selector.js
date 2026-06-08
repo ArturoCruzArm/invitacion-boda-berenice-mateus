@@ -191,6 +191,11 @@ const photos = [
     'imagenes/foto7_0187.webp',
     'imagenes/foto7_0188.webp'
 ];
+// Thumbnail helper: usa thumb/ en grid para ahorrar RAM en moviles
+function getThumbPath(fullPath) {
+    return fullPath.replace('imagenes/', 'imagenes/thumb/');
+}
+
 const STORAGE_KEY = 'boda_berenice_oliver_photo_selections';
 const LIMITES = {
     ampliacion: 1,
@@ -349,7 +354,7 @@ function renderGallery() {
         const displayNumber = `Foto ${index + 1}`;
         const mediaHTML = `
             <div class="photo-image-container">
-                <img src="${photo}" alt="${displayNumber}" loading="lazy">
+                <img src="${getThumbPath(photo)}" alt="${displayNumber}" loading="lazy">
             </div>
         `;
 
